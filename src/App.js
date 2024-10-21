@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import './App.css';
+import Home from './component/Home';
+import Auth from './component/Auth';
+import { useSelector } from 'react-redux';
+import ProtectedRoute from './protectedRoute';
+import DeviceList from './component/DeviceList';
 
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Auth />} />
+
+      <Route path="/home" element={
+        <ProtectedRoute >
+          <Home />
+        </ProtectedRoute>
+      } />
+      <Route path="/device-list" element={
+        <ProtectedRoute >
+          <DeviceList />
+        </ProtectedRoute>
+      } />
+
+    </Routes>
   );
 }
 

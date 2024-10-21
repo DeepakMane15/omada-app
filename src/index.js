@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import store from './utils/redux/store'; // Make sure to create a Redux store
+// import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
-    <App />
+   <QueryClientProvider client={queryClient}>
+      <Provider store={store}> {/* Wrap the App component with Provider */}
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
