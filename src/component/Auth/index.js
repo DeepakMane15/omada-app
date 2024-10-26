@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import "./index.css";
 
-import BackgroundImage from "../../assets/images/background.png";
+import BackgroundImage from "../../assets/images/bg.jpg";
 import Logo from "../../assets/images/logo.png";
 import { useMutation } from "@tanstack/react-query";
 import { GetAccessToken, GetAuthToken, LoginApi } from "../../api/authApi";
