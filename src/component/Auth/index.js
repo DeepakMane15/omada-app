@@ -26,18 +26,10 @@ const Auth = () => {
                     username: inputUsername,
                     password: inputPassword,
                 });
-
-                // Step 2: Call GetAuthToken with CSRF token and session ID from the login response
-                const { csrfToken, sessionId } = loginResponse.data;
-                const authTokenResponse = await GetAuthToken({ csrfToken, sessionId });
-
-                // Step 3: Call GetAccessToken with the authorization code from the previous response
-                const { code } = authTokenResponse.data;
-                const accessTokenResponse = await GetAccessToken(code);
-
+                console.log(loginResponse);
                 // Step 4: Dispatch Redux login action with access and refresh tokens
-                const { accessToken, refreshToken } = accessTokenResponse.data.result;
-                dispatch(login({ accessToken, refreshToken }));
+                const { accessToken, refreshToken, sessionId } = loginResponse.data;
+                dispatch(login({ accessToken, refreshToken, sessionId }));
 
                 // Hide loader and finish login process
                 dispatch(hideLoader());

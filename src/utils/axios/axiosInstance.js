@@ -5,8 +5,8 @@ import store from "../redux/store";
 
 // Create axios instance
 const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_OMADA_BASE_URL,
-    timeout: 10000,
+    baseURL: process.env.REACT_APP_BASE_URL_NODE,
+    timeout: 60000,
    headers: {
         "Content-Type": "application/json",
     },

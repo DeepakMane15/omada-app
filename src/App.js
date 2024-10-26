@@ -6,6 +6,7 @@ import Auth from './component/Auth';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './protectedRoute';
 import DeviceList from './component/DeviceList';
+import Header from './component/Header';
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -16,11 +17,13 @@ function App() {
 
       <Route path="/home" element={
         <ProtectedRoute >
+          <Header />
           <Home />
         </ProtectedRoute>
       } />
       <Route path="/device-list" element={
         <ProtectedRoute >
+          <Header />
           <DeviceList />
         </ProtectedRoute>
       } />

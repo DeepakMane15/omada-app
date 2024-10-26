@@ -1,7 +1,10 @@
 import { Container } from 'react-bootstrap';
 import mapImage from '../../assets/images/map.jpg';
-import { DevicesListMaster } from '../../common/AppConstant';
-import Header from '../Header';
+import { useMutation } from '@tanstack/react-query';
+import { GetDeviceApi } from '../../api/deviceApi';
+import { useEffect, useState } from 'react';
+import { selectSessionId, selectToken } from '../../utils/redux/authSlice';
+import store from '../../utils/redux/store';
 
 const Blinker = ({ x, y }) => {
     const blinkerStyle = {
@@ -19,15 +22,32 @@ const Blinker = ({ x, y }) => {
 };
 
 const Home = () => {
-    const deviceList = DevicesListMaster;
+    const [deviceList, setDeviceList] = useState([]);
+    const token = selectToken(store.getState()); // Get accessToken from Redux
+    const sessionId = selectSessionId(store.getState()); // Get accessToken from Redux
+
+    const getMutation = useMutation({
+        mutationFn: () => GetDeviceApi(token, sessionId),
+        onSuccess: (data) => {
+            setDeviceList(data.data);
+            console.log(deviceList);
+            console.log(data.data)
+        },
+        onError: (error) => {
+            console.error("Api failed:", error.response?.data || error.message);
+        }
+    });
+
+    useEffect(() => {
+        getMutation.mutate()
+    }, [])
 
     return (
         <>
-            <Header />
             <Container>
                 <div className='mt-4'>
                     <img height={'80%'} width={'100%'} src={mapImage} alt="Map" />
-                    {deviceList.map(device => (
+                    {deviceList && deviceList.length > 0 && deviceList?.map(device => (
                         <Blinker x={device.xAxis} y={device.yAxis} />
                     ))}
                 </div>

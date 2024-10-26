@@ -1,10 +1,18 @@
 import { useState } from "react"
+import { Dropdown } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import profileImage from '../../assets/images/user.png';
+import { useDispatch } from "react-redux";
+import { logout } from "../../utils/redux/authSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logout());
+    }
 
     return (
         <>
@@ -18,6 +26,15 @@ const Header = () => {
                             <Nav.Link href="/device-list">Device List</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" className="bg-transparent border-0">
+                            <img src={profileImage} alt="Profile" className="rounded-circle" width="40" height="40" />
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Container>
             </Navbar>
         </>

@@ -27,6 +27,7 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
+      state.sessionId = action.payload.sessionId;
     },
     setAccessToken(state, action) {
       state.accessToken = action.payload; 
@@ -35,11 +36,13 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.accessToken = null;
       state.refreshToken = null;
+      state.sessionId = null;
     },
   },
 });
 
 export const { login, logout, setAccessToken } = authSlice.actions;
 export const selectToken = (state) => state.auth.accessToken;
+export const selectSessionId = (state) => state.auth.sessionId;
 export const selectRefreshToken = (state) => state.auth.refreshToken;
 export default authSlice.reducer;

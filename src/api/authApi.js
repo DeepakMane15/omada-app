@@ -3,7 +3,7 @@ import { PageRoutes } from "../common/AppConstant";
 import axiosInstance from "../utils/axios/axiosInstance";
 
 export const LoginApi = async (creds) => {
-    const response = await axiosInstance.post(PageRoutes.LOGIN + `${process.env.REACT_APP_CLIENT_ID}&omadac_id=${process.env.REACT_APP_OMADA_ID}`, creds);
+    const response = await axiosInstance.post('auth/signin', creds);
     return response;
 };
 
