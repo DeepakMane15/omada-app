@@ -23,15 +23,15 @@ const Blinker = ({ x, y }) => {
 
 const Home = () => {
     const [deviceList, setDeviceList] = useState([]);
-    const token = selectToken(store.getState()); // Get accessToken from Redux
-    const sessionId = selectSessionId(store.getState()); // Get accessToken from Redux
+    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+    const [selectedCoordinates, setSelectedCoordinates] = useState(null); // State for storing selected coordinates
+    const token = selectToken(store.getState());
+    const sessionId = selectSessionId(store.getState());
 
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId),
         onSuccess: (data) => {
             setDeviceList(data.data);
-            console.log(deviceList);
-            console.log(data.data)
         },
         onError: (error) => {
             console.error("Api failed:", error.response?.data || error.message);
@@ -39,21 +39,55 @@ const Home = () => {
     });
 
     useEffect(() => {
-        getMutation.mutate()
-    }, [])
+        getMutation.mutate();
+    }, []);
+
+    // Function to handle mouse move event
+    const handleMouseMove = (event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const x = event.clientX - rect.left; // Get x position relative to the image
+        const y = event.clientY - rect.top; // Get y position relative to the image
+        setCursorPos({ x, y });
+    };
+
+    // Function to handle click event on the map
+    const handleClick = () => {
+        // Store the selected coordinates when clicking on the map
+        setSelectedCoordinates(cursorPos);
+        console.log('Selected Coordinates:', cursorPos); // For debugging
+    };
 
     return (
-        <>
-            <Container>
-                <div className='mt-4'>
-                    <img height={'80%'} width={'100%'} src={mapImage} alt="Map" />
-                    {deviceList && deviceList.length > 0 && deviceList?.map(device => (
-                        <Blinker x={device.xAxis} y={device.yAxis} />
-                    ))}
+        <Container>
+            <div className='mt-4' style={{ position: 'relative' }}>
+                <img
+                    height={'80%'}
+                    width={'100%'}
+                    src={mapImage}
+                    alt="Map"
+                    onMouseMove={handleMouseMove} // Attach the mouse move handler
+                    onClick={handleClick} // Attach the click handler to the image
+                />
+
+                {/* Display the coordinates of the cursor */}
+                <div style={{ position: 'absolute', top: '10px', left: '10px', color: 'black' }}>
+                    X: {cursorPos.x}, Y: {cursorPos.y}
                 </div>
-            </Container>
-        </>
-    )
+
+                {/* Display selected coordinates */}
+                {selectedCoordinates && (
+                    <div style={{ position: 'absolute', top: '30px', left: '10px', color: 'blue' }}>
+                        Selected - X: {selectedCoordinates.x}, Y: {selectedCoordinates.y}
+                    </div>
+                )}
+
+                {/* Render device blinkers based on device list */}
+                {deviceList && deviceList.length > 0 && deviceList.map((device, index) => (
+                    <Blinker key={index} x={device.xAxis} y={device.yAxis} />
+                ))}
+            </div>
+        </Container>
+    );
 }
 
 export default Home;
