@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -9,14 +9,24 @@ import { logout } from "../../utils/redux/authSlice";
 
 const Header = () => {
     const dispatch = useDispatch();
+    const [isVisible, setIsVisible] = useState(false); // State to control visibility
 
     const handleLogout = () => {
         dispatch(logout());
-    }
+    };
+
+    // Functions to handle mouse events
+    const showHeader = () => {
+        setIsVisible(true);
+    };
+
+    const hideHeader = () => {
+        setIsVisible(false);
+    };
 
     return (
-        <>
-            <Navbar expand="lg" className="bg-body-tertiary">
+        <div onMouseEnter={showHeader} onMouseLeave={hideHeader}>
+            <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${isVisible ? 'visible' : 'hidden'}`}>
                 <Container>
                     <Navbar.Brand href="#home">Sat Nirankari Mission</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -37,8 +47,8 @@ const Header = () => {
                     </Dropdown>
                 </Container>
             </Navbar>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default Header;

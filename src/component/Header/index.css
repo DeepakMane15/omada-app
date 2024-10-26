@@ -1,0 +1,7 @@
+.hidden {
+    display: none; /* Header is hidden when not hovered */
+}
+
+.visible {
+    display: block; /* Header is visible when hovered */
+}
