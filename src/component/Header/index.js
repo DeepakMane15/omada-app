@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Form } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import profileImage from '../../assets/images/user.png';
 import { useDispatch } from "react-redux";
 import { logout } from "../../utils/redux/authSlice";
+import './index.css';
 
 const Header = () => {
     const dispatch = useDispatch();

@@ -1,7 +1,15 @@
-.hidden {
-    display: none; /* Header is hidden when not hovered */
+/* .hidden {
+    display: none;
 }
 
 .visible {
-    display: block; /* Header is visible when hovered */
+    display: block; 
+}
+
+.dropdown button {
+    color: black !important;
+}  */
+
+select {
+    width: 145px !important;
 }
