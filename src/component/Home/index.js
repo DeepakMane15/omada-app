@@ -75,7 +75,8 @@ const Home = () => {
     const sessionId = selectSessionId(store.getState());
     const imageRef = useRef(null);
     const [filteredDeviceList, setFilteredDeviceList] = useState([]);
-    const [type, setType] = useState("0");
+    const [type, setType] = useState("all");
+    const [deviceType, setDeviceType] = useState("all");
     const [connectedCount, setConnectedCount] = useState(0);
     const [apiCall, setApiCall] = useState(0);
 
@@ -92,18 +93,46 @@ const Home = () => {
         }
     });
 
-    const handleFilter = () => {
-        if (type === -1) {
-            setFilteredDeviceList(deviceList);
-            return;
-        }
-        let filteredList = deviceList.filter(d => d?.status === type);
+    const applyFilters = (devices) => {
+        let filteredList = devices.filter(d => 
+            (type === "all" || d.status === Number(type)) &&
+            (deviceType === "all" || d.type === deviceType)
+        );
         setFilteredDeviceList(filteredList);
-    }
+    };
 
     useEffect(() => {
-        handleFilter();
-    }, [type]);
+        applyFilters(deviceList);
+    }, [type, deviceType]);
+
+    // const handleFilter = () => {
+    //     if (type == "all" && deviceType == "all") {
+    //         setFilteredDeviceList(...deviceList);
+    //         return;
+    //     }
+    //     let filteredList = deviceList.filter(d => (type !== 'all' ? d.status == type : true)
+    //         && (deviceType !== 'all' ? d.type == deviceType : true) );
+    //     setFilteredDeviceList(filteredList);
+    // }
+
+    // useEffect(() => {
+    //     handleFilter();
+    // }, [type]);
+
+    // const handleDeviceTypeFilter = () => {
+    //     if (deviceType == "all" && type == "all" ) {
+    //         setFilteredDeviceList(...deviceList);
+    //         console.log(filteredDeviceList);
+    //         return;
+    //     }
+    //     let filteredList = deviceList.filter(d => (deviceType != 'all' ? d?.type == deviceType: true) && (type !== 'all' ? d.status == type : true));
+    //     setFilteredDeviceList(filteredList);
+
+    // }
+
+    // useEffect(() => {
+    //     handleDeviceTypeFilter();
+    // }, [deviceType]);
 
     useEffect(() => {
         const imageElement = imageRef.current;
@@ -148,11 +177,18 @@ const Home = () => {
     return (
         <Container style={{ marginTop: '100px' }}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
-                <label style={{ color: 'white' }}>Filter : </label>
-                <Form.Select style={{ width: '170px' }} aria-label="Filter" value={type} onChange={e => setType(e.target.value)}>
-                    <option value="-1">All ({deviceList.length})</option>
-                    <option value="1">Connected ({connectedCount})</option>
-                    <option value="0">Disconnected ({deviceList.length - connectedCount})</option>
+                <label style={{ color: 'white' }}>Status : </label>
+                <Form.Select className="custom-select" style={{ width: '170px !important' }} aria-label="Filter" value={type} onChange={e => setType(e.target.value)}>
+                    <option value="all">All ({deviceList.length})</option>
+                    <option value="1" style={{color: 'green'}}>Connected ({connectedCount})</option>
+                    <option value="0" style={{color: 'red'}}>Disconnected ({deviceList.length - connectedCount})</option>
+                </Form.Select>
+
+                <label style={{ color: 'white' }}>Device Type : </label>
+                <Form.Select style={{ width: '170px' }} aria-label="Filter" value={deviceType} onChange={e => setDeviceType(e.target.value)}>
+                    <option value="all">All ({deviceList.length})</option>
+                    <option value="ap">AP ({deviceList.filter(d => d.type === 'ap')?.length || 0})</option>
+                    <option value="switch">Switch ({deviceList.filter(d => d.type === 'switch')?.length || 0})</option>
                 </Form.Select>
             </div>
             <BlinkAnimationStyles />
@@ -171,11 +207,11 @@ const Home = () => {
                     X: {cursorPos.x.toFixed(2)}%, Y: {cursorPos.y.toFixed(2)}%
                 </div>
 
-                {selectedCoordinates && (
+                {/* {selectedCoordinates && (
                     <div style={{ position: 'absolute', top: '30px', left: '10px', color: 'blue' }}>
                         Selected - X: {selectedCoordinates.x.toFixed(2)}%, Y: {selectedCoordinates.y.toFixed(2)}%
                     </div>
-                )}
+                )} */}
 
                 {filteredDeviceList && filteredDeviceList.length > 0 && filteredDeviceList.map((device, index) => (
                     <Blinker

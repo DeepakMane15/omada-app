@@ -37,3 +37,7 @@ th, td {
 select {
   width: 170px !important;
 }
+
+.custom-select {
+  width: 190px !important;
+}
