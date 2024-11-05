@@ -29,7 +29,7 @@ const Header = () => {
         <div onMouseEnter={showHeader} onMouseLeave={hideHeader}>
             <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${isVisible ? 'visible' : 'hidden'}`}>
                 <Container>
-                    <Navbar.Brand href="#home">Sat Nirankari Mission</Navbar.Brand>
+                    <Navbar.Brand href="#home">Sant Nirankari Mission</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
