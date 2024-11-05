@@ -9,3 +9,8 @@ export const GetDeviceApi = async (token,sessionId, requireCod=false) => {
     const response = await axiosInstance.post('snm-get/device-info', {token:token, sessionId: sessionId, requireCod: requireCod});
     return response;
 };
+
+export const GetPrtgList = async () => {
+    const response = await axiosInstance.get('snm-get/prtg-list');
+    return response.data;
+};

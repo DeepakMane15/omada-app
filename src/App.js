@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import ProtectedRoute from './protectedRoute';
 import DeviceList from './component/DeviceList';
 import Header from './component/Header';
+import Prtg from './component/prtg';
+import PrtgList from './component/prtgList';
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -25,6 +27,21 @@ function App() {
         <ProtectedRoute >
           <Header />
           <DeviceList />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/prtg" element={
+        <ProtectedRoute >
+          <Header />
+          <Prtg />
+        </ProtectedRoute>
+      } />
+
+
+      <Route path="/prtg-list" element={
+        <ProtectedRoute >
+          <Header />
+          <PrtgList />
         </ProtectedRoute>
       } />
 

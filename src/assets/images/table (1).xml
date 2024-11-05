@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <devices totalcount="107" listend="1">
+   <prtg-version>24.3.98.1210</prtg-version>
+   <item>
+    <objid>40</objid>
+    <probe>Local Probe</probe>
+    <group>Local Probe</group>
+    <device>Probe Device</device>
+    <host>127.0.0.1</host>
+   </item>
+   <item>
+    <objid>42</objid>
+    <probe>Local Probe</probe>
+    <group>Network Infrastructure</group>
+    <device>DNS: 8.8.8.8</device>
+    <host>dns.google</host>
+   </item>
+   <item>
+    <objid>43</objid>
+    <probe>Local Probe</probe>
+    <group>Network Infrastructure</group>
+    <device>DNS: 4.2.2.2</device>
+    <host>b.resolvers.level3.net</host>
+   </item>
+   <item>
+    <objid>44</objid>
+    <probe>Local Probe</probe>
+    <group>Network Infrastructure</group>
+    <device>CORE_SWITCH</device>
+    <host>172.16.29.1</host>
+   </item>
+   <item>
+    <objid>1027</objid>
+    <probe>None (autonomous)</probe>
+    <probe_raw>autonomous</probe_raw>
+    <group>Root</group>
+    <device>PRTG Core Server</device>
+   </item>
+   <item>
+    <objid>2056</objid>
+    <probe>Local Probe</probe>
+    <group>Network Infrastructure</group>
+    <device>172.16.29.20</device>
+    <host>172.16.29.20</host>
+   </item>
+   <item>
+    <objid>2060</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.33</device>
+    <host>172.16.29.33</host>
+   </item>
+   <item>
+    <objid>2061</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.9</device>
+    <host>172.16.29.9</host>
+   </item>
+   <item>
+    <objid>2062</objid>
+    <probe>Local Probe</probe>
+    <group>Network Infrastructure</group>
+    <device>172.16.29.24</device>
+    <host>172.16.29.24</host>
+   </item>
+   <item>
+    <objid>2063</objid>
+    <probe>Local Probe</probe>
+    <group>VMware Hosts</group>
+    <device>172.16.29.6</device>
+    <host>172.16.29.6</host>
+   </item>
+   <item>
+    <objid>2064</objid>
+    <probe>Local Probe</probe>
+    <group>VMware Hosts</group>
+    <device>172.16.29.16</device>
+    <host>172.16.29.16</host>
+   </item>
+   <item>
+    <objid>2065</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.32</device>
+    <host>172.16.29.32</host>
+   </item>
+   <item>
+    <objid>2066</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.17</device>
+    <host>172.16.29.17</host>
+   </item>
+   <item>
+    <objid>2067</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.100</device>
+    <host>172.16.29.100</host>
+   </item>
+   <item>
+    <objid>2068</objid>
+    <probe>Local Probe</probe>
+    <group>VMware Hosts</group>
+    <device>172.16.29.2</device>
+    <host>172.16.29.2</host>
+   </item>
+   <item>
+    <objid>2069</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.31</device>
+    <host>172.16.29.31</host>
+   </item>
+   <item>
+    <objid>2070</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.38</device>
+    <host>172.16.29.38</host>
+   </item>
+   <item>
+    <objid>2071</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.36</device>
+    <host>172.16.29.36</host>
+   </item>
+   <item>
+    <objid>2072</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.5</device>
+    <host>172.16.29.5</host>
+   </item>
+   <item>
+    <objid>2073</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.102</device>
+    <host>172.16.29.102</host>
+   </item>
+   <item>
+    <objid>2074</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.149</device>
+    <host>172.16.29.149</host>
+   </item>
+   <item>
+    <objid>2075</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.205</device>
+    <host>172.16.29.205</host>
+   </item>
+   <item>
+    <objid>2076</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.209</device>
+    <host>172.16.29.209</host>
+   </item>
+   <item>
+    <objid>2077</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.175</device>
+    <host>172.16.29.175</host>
+   </item>
+   <item>
+    <objid>2078</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.185</device>
+    <host>172.16.29.185</host>
+   </item>
+   <item>
+    <objid>2079</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.105</device>
+    <host>172.16.29.105</host>
+   </item>
+   <item>
+    <objid>2080</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.195</device>
+    <host>172.16.29.195</host>
+   </item>
+   <item>
+    <objid>2081</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.206</device>
+    <host>172.16.29.206</host>
+   </item>
+   <item>
+    <objid>2082</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.188</device>
+    <host>172.16.29.188</host>
+   </item>
+   <item>
+    <objid>2083</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.152</device>
+    <host>172.16.29.152</host>
+   </item>
+   <item>
+    <objid>2084</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.192</device>
+    <host>172.16.29.192</host>
+   </item>
+   <item>
+    <objid>2085</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.207</device>
+    <host>172.16.29.207</host>
+   </item>
+   <item>
+    <objid>2086</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.187</device>
+    <host>172.16.29.187</host>
+   </item>
+   <item>
+    <objid>2087</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.181</device>
+    <host>172.16.29.181</host>
+   </item>
+   <item>
+    <objid>2088</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.157</device>
+    <host>172.16.29.157</host>
+   </item>
+   <item>
+    <objid>2089</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.212</device>
+    <host>172.16.29.212</host>
+   </item>
+   <item>
+    <objid>2090</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.203</device>
+    <host>172.16.29.203</host>
+   </item>
+   <item>
+    <objid>2091</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.217</device>
+    <host>172.16.29.217</host>
+   </item>
+   <item>
+    <objid>2092</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.198</device>
+    <host>172.16.29.198</host>
+   </item>
+   <item>
+    <objid>2093</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.182</device>
+    <host>172.16.29.182</host>
+   </item>
+   <item>
+    <objid>2094</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.68</device>
+    <host>172.16.29.68</host>
+   </item>
+   <item>
+    <objid>2095</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.183</device>
+    <host>172.16.29.183</host>
+   </item>
+   <item>
+    <objid>2096</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.154</device>
+    <host>172.16.29.154</host>
+   </item>
+   <item>
+    <objid>2097</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.199</device>
+    <host>172.16.29.199</host>
+   </item>
+   <item>
+    <objid>2098</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.171</device>
+    <host>172.16.29.171</host>
+   </item>
+   <item>
+    <objid>2099</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.173</device>
+    <host>172.16.29.173</host>
+   </item>
+   <item>
+    <objid>2100</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.156</device>
+    <host>172.16.29.156</host>
+   </item>
+   <item>
+    <objid>2101</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.194</device>
+    <host>172.16.29.194</host>
+   </item>
+   <item>
+    <objid>2102</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.165</device>
+    <host>172.16.29.165</host>
+   </item>
+   <item>
+    <objid>2103</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.176</device>
+    <host>172.16.29.176</host>
+   </item>
+   <item>
+    <objid>2104</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.153</device>
+    <host>172.16.29.153</host>
+   </item>
+   <item>
+    <objid>2105</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.162</device>
+    <host>172.16.29.162</host>
+   </item>
+   <item>
+    <objid>2106</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.172</device>
+    <host>172.16.29.172</host>
+   </item>
+   <item>
+    <objid>2107</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.219</device>
+    <host>172.16.29.219</host>
+   </item>
+   <item>
+    <objid>2108</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.167</device>
+    <host>172.16.29.167</host>
+   </item>
+   <item>
+    <objid>2109</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.168</device>
+    <host>172.16.29.168</host>
+   </item>
+   <item>
+    <objid>2110</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.196</device>
+    <host>172.16.29.196</host>
+   </item>
+   <item>
+    <objid>2111</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.169</device>
+    <host>172.16.29.169</host>
+   </item>
+   <item>
+    <objid>2112</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.220</device>
+    <host>172.16.29.220</host>
+   </item>
+   <item>
+    <objid>2113</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.158</device>
+    <host>172.16.29.158</host>
+   </item>
+   <item>
+    <objid>2114</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.186</device>
+    <host>172.16.29.186</host>
+   </item>
+   <item>
+    <objid>2115</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.223</device>
+    <host>172.16.29.223</host>
+   </item>
+   <item>
+    <objid>2116</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.222</device>
+    <host>172.16.29.222</host>
+   </item>
+   <item>
+    <objid>2117</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.204</device>
+    <host>172.16.29.204</host>
+   </item>
+   <item>
+    <objid>2118</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.221</device>
+    <host>172.16.29.221</host>
+   </item>
+   <item>
+    <objid>2119</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.163</device>
+    <host>172.16.29.163</host>
+   </item>
+   <item>
+    <objid>2120</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.193</device>
+    <host>172.16.29.193</host>
+   </item>
+   <item>
+    <objid>2121</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.191</device>
+    <host>172.16.29.191</host>
+   </item>
+   <item>
+    <objid>2122</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.200</device>
+    <host>172.16.29.200</host>
+   </item>
+   <item>
+    <objid>2123</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.197</device>
+    <host>172.16.29.197</host>
+   </item>
+   <item>
+    <objid>2124</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.201</device>
+    <host>172.16.29.201</host>
+   </item>
+   <item>
+    <objid>2125</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.218</device>
+    <host>172.16.29.218</host>
+   </item>
+   <item>
+    <objid>2126</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.161</device>
+    <host>172.16.29.161</host>
+   </item>
+   <item>
+    <objid>2127</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.150</device>
+    <host>172.16.29.150</host>
+   </item>
+   <item>
+    <objid>2128</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.202</device>
+    <host>172.16.29.202</host>
+   </item>
+   <item>
+    <objid>2129</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.160</device>
+    <host>172.16.29.160</host>
+   </item>
+   <item>
+    <objid>2130</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.208</device>
+    <host>172.16.29.208</host>
+   </item>
+   <item>
+    <objid>2131</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.159</device>
+    <host>172.16.29.159</host>
+   </item>
+   <item>
+    <objid>2132</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.190</device>
+    <host>172.16.29.190</host>
+   </item>
+   <item>
+    <objid>2133</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.189</device>
+    <host>172.16.29.189</host>
+   </item>
+   <item>
+    <objid>2134</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.227</device>
+    <host>172.16.29.227</host>
+   </item>
+   <item>
+    <objid>2135</objid>
+    <probe>Local Probe</probe>
+    <group>Linux / macOS / Unix</group>
+    <device>172.16.29.170</device>
+    <host>172.16.29.170</host>
+   </item>
+   <item>
+    <objid>2216</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.82</device>
+    <host>RAVIRANJAN</host>
+   </item>
+   <item>
+    <objid>2217</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.67</device>
+    <host>SNAS</host>
+   </item>
+   <item>
+    <objid>2218</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.40</device>
+    <host>WIN-OTFDDSSHN2M</host>
+   </item>
+   <item>
+    <objid>2219</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.39</device>
+    <host>DESKTOP-VIKRAM-</host>
+   </item>
+   <item>
+    <objid>2220</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.37</device>
+    <host>SNM-DHCP2</host>
+   </item>
+   <item>
+    <objid>2221</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.27</device>
+    <host>172.16.29.27</host>
+   </item>
+   <item>
+    <objid>2222</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.23</device>
+    <host>172.16.29.23</host>
+   </item>
+   <item>
+    <objid>2223</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.22</device>
+    <host>172.16.29.22</host>
+   </item>
+   <item>
+    <objid>2224</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.15</device>
+    <host>172.16.29.15</host>
+   </item>
+   <item>
+    <objid>2225</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.13</device>
+    <host>172.16.29.13</host>
+   </item>
+   <item>
+    <objid>2226</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.11</device>
+    <host>172.16.29.11</host>
+   </item>
+   <item>
+    <objid>2227</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.10</device>
+    <host>172.16.29.10</host>
+   </item>
+   <item>
+    <objid>2228</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.4</device>
+    <host>172.16.29.4</host>
+   </item>
+   <item>
+    <objid>2229</objid>
+    <probe>Local Probe</probe>
+    <group>Subnet 172.16.29</group>
+    <device>172.16.29.3</device>
+    <host>172.16.29.3</host>
+   </item>
+   <item>
+    <objid>2590</objid>
+    <probe>Local Probe</probe>
+    <group>Network Discovery</group>
+    <device>FIREWALL-SAMALKHA</device>
+    <host>172.30.254.1</host>
+   </item>
+   <item>
+    <objid>2629</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.10</device>
+    <host>172.16.23.10</host>
+   </item>
+   <item>
+    <objid>2630</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.16</device>
+    <host>172.16.23.16</host>
+   </item>
+   <item>
+    <objid>2631</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.17</device>
+    <host>172.16.23.17</host>
+   </item>
+   <item>
+    <objid>2632</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.18</device>
+    <host>172.16.23.18</host>
+   </item>
+   <item>
+    <objid>2633</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.20</device>
+    <host>172.16.23.20</host>
+   </item>
+   <item>
+    <objid>2634</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.25</device>
+    <host>172.16.23.25</host>
+   </item>
+   <item>
+    <objid>2642</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.26</device>
+    <host>172.16.23.26</host>
+   </item>
+   <item>
+    <objid>2643</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.50</device>
+    <host>172.16.23.50</host>
+   </item>
+   <item>
+    <objid>2660</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.51</device>
+    <host>172.16.23.51</host>
+   </item>
+   <item>
+    <objid>2678</objid>
+    <probe>Local Probe</probe>
+    <group>VOICE-GW</group>
+    <device>172.16.23.251</device>
+    <host>172.16.23.251</host>
+   </item>
+  </devices>

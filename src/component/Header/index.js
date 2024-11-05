@@ -35,6 +35,8 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
                             <Nav.Link href="/device-list">Device List</Nav.Link>
+                            <Nav.Link href="/prtg">PRTG Map</Nav.Link>
+                            <Nav.Link href="/prtg-list">PRTG List</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                     <Dropdown>

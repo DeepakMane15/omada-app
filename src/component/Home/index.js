@@ -78,7 +78,7 @@ const Home = () => {
     const [type, setType] = useState("all");
     const [deviceType, setDeviceType] = useState("all");
     const [connectedCount, setConnectedCount] = useState(0);
-    const [apiCall, setApiCall] = useState(0);
+    const [apiCalled, setApiCalled] = useState(false);
 
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId),
@@ -90,11 +90,14 @@ const Home = () => {
         },
         onError: (error) => {
             console.error("Api failed:", error.response?.data || error.message);
+        },
+        options: {
+            staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
         }
     });
 
     const applyFilters = (devices) => {
-        let filteredList = devices.filter(d => 
+        let filteredList = devices.filter(d =>
             (type === "all" || d.status === Number(type)) &&
             (deviceType === "all" || d.type === deviceType)
         );
@@ -105,34 +108,12 @@ const Home = () => {
         applyFilters(deviceList);
     }, [type, deviceType]);
 
-    // const handleFilter = () => {
-    //     if (type == "all" && deviceType == "all") {
-    //         setFilteredDeviceList(...deviceList);
-    //         return;
-    //     }
-    //     let filteredList = deviceList.filter(d => (type !== 'all' ? d.status == type : true)
-    //         && (deviceType !== 'all' ? d.type == deviceType : true) );
-    //     setFilteredDeviceList(filteredList);
-    // }
-
-    // useEffect(() => {
-    //     handleFilter();
-    // }, [type]);
-
-    // const handleDeviceTypeFilter = () => {
-    //     if (deviceType == "all" && type == "all" ) {
-    //         setFilteredDeviceList(...deviceList);
-    //         console.log(filteredDeviceList);
-    //         return;
-    //     }
-    //     let filteredList = deviceList.filter(d => (deviceType != 'all' ? d?.type == deviceType: true) && (type !== 'all' ? d.status == type : true));
-    //     setFilteredDeviceList(filteredList);
-
-    // }
-
-    // useEffect(() => {
-    //     handleDeviceTypeFilter();
-    // }, [deviceType]);
+    useEffect(() => {
+        if (!apiCalled) {  // Check if the API has been called
+            getMutation.mutate();
+            setApiCalled(true); // Set the flag to true after calling the API
+        }
+    }, [apiCalled]);
 
     useEffect(() => {
         const imageElement = imageRef.current;
@@ -142,11 +123,6 @@ const Home = () => {
                 width: imageElement.clientWidth,
                 height: imageElement.clientHeight,
             });
-        }
-
-        if (apiCall === 0) {
-            getMutation.mutate();
-            setApiCall(1);
         }
 
         const handleResize = () => {
@@ -180,8 +156,8 @@ const Home = () => {
                 <label style={{ color: 'white' }}>Status : </label>
                 <Form.Select className="custom-select" style={{ width: '170px !important' }} aria-label="Filter" value={type} onChange={e => setType(e.target.value)}>
                     <option value="all">All ({deviceList.length})</option>
-                    <option value="1" style={{color: 'green'}}>Connected ({connectedCount})</option>
-                    <option value="0" style={{color: 'red'}}>Disconnected ({deviceList.length - connectedCount})</option>
+                    <option value="1" style={{ color: 'green' }}>Connected ({connectedCount})</option>
+                    <option value="0" style={{ color: 'red' }}>Disconnected ({deviceList.length - connectedCount})</option>
                 </Form.Select>
 
                 <label style={{ color: 'white' }}>Device Type : </label>
