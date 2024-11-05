@@ -56,7 +56,7 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config;
         console.log(error)
         // Check if error is due to token expiration (401 or 402)
-        if (error.errorCode === -44112) {
+        if (error?.response?.data?.errorCode === -44112) {
             const newToken = await refreshAccessToken(); // Refresh the token
 
             if (newToken) {
