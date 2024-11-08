@@ -14,3 +14,8 @@ export const GetPrtgList = async () => {
     const response = await axiosInstance.get('snm-get/prtg-list');
     return response.data;
 };
+
+export const SaveCoordinates = async (deviceId, xAxis, yAxis) => {
+    const response = await axiosInstance.post('snm-get/save-coordinates', {deviceId:deviceId, xAxis:xAxis, yAxis:yAxis});
+    return response;
+};

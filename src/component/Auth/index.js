@@ -28,8 +28,8 @@ const Auth = () => {
                 });
                 console.log(loginResponse);
                 // Step 4: Dispatch Redux login action with access and refresh tokens
-                const { accessToken, refreshToken, sessionId } = loginResponse.data;
-                dispatch(login({ accessToken, refreshToken, sessionId }));
+                const { accessToken, refreshToken, sessionId, userData } = loginResponse.data;
+                dispatch(login({ accessToken, refreshToken, sessionId, userData }));
 
                 // Hide loader and finish login process
                 dispatch(hideLoader());

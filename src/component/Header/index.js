@@ -4,12 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import profileImage from '../../assets/images/user.png';
-import { useDispatch } from "react-redux";
-import { logout } from "../../utils/redux/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUserData } from "../../utils/redux/authSlice";
 import './index.css';
+import { useLocation } from "react-router-dom";
+import store from "../../utils/redux/store";
 
 const Header = () => {
     const dispatch = useDispatch();
+    const userData = selectUserData(store.getState());
     const [isVisible, setIsVisible] = useState(false); // State to control visibility
 
     const handleLogout = () => {
@@ -25,6 +28,10 @@ const Header = () => {
         setIsVisible(false);
     };
 
+    const location = useLocation();
+
+    const isLinkActive = (path) => location.pathname === path ? 'activated' : '';
+
     return (
         <div onMouseEnter={showHeader} onMouseLeave={hideHeader}>
             <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${isVisible ? 'visible' : 'hidden'}`}>
@@ -33,10 +40,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/device-list">Device List</Nav.Link>
-                            <Nav.Link href="/prtg">PRTG Map</Nav.Link>
-                            <Nav.Link href="/prtg-list">PRTG List</Nav.Link>
+                            <Nav.Link href="/home" className={isLinkActive('/home')}>Home</Nav.Link>
+                            <Nav.Link href="/device-list" className={isLinkActive('/device-list')}>Device List</Nav.Link>
+                            <Nav.Link href="/prtg" className={isLinkActive('/prtg')}>PRTG Map</Nav.Link>
+                            <Nav.Link href="/prtg-list" className={isLinkActive('/prtg-list')}>PRTG List</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                     <Dropdown>
@@ -45,6 +52,7 @@ const Header = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
+                            <p className="usertype-help-text">{userData?.user_type}</p>
                             <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
