@@ -7,8 +7,8 @@ import profileImage from '../../assets/images/user.png';
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUserData } from "../../utils/redux/authSlice";
 import './index.css';
-import { useLocation } from "react-router-dom";
 import store from "../../utils/redux/store";
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -40,10 +40,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/home" className={isLinkActive('/home')}>Home</Nav.Link>
-                            <Nav.Link href="/device-list" className={isLinkActive('/device-list')}>Device List</Nav.Link>
-                            <Nav.Link href="/prtg" className={isLinkActive('/prtg')}>PRTG Map</Nav.Link>
-                            <Nav.Link href="/prtg-list" className={isLinkActive('/prtg-list')}>PRTG List</Nav.Link>
+                            <Nav.Link as={Link} to="/home" className={isLinkActive('/home')}>Home</Nav.Link>
+                            <Nav.Link as={Link} to="/device-list" className={isLinkActive('/device-list')}>Device List</Nav.Link>
+                            <Nav.Link as={Link} to="/prtg" className={isLinkActive('/prtg')}>PRTG Map</Nav.Link>
+                            <Nav.Link as={Link} to="/prtg-list" className={isLinkActive('/prtg-list')}>PRTG List</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                     <Dropdown>
