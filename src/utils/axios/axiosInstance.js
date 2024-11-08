@@ -5,7 +5,7 @@ import store from "../redux/store";
 
 // Create axios instance
 const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL_NODE,
+    baseURL:  'http://localhost:3500/api/', // process.env.REACT_APP_BASE_URL_NODE,
     timeout: 60000,
    headers: {
         "Content-Type": "application/json",

@@ -32,20 +32,22 @@ const PrtgList = () => {
                 <thead>
                     <tr>
                         <th>Object ID</th>
-                        <th>Probe</th>
-                        <th>Group</th>
+                        {/* <th>Probe</th> */}
                         <th>Device</th>
+                        <th>Group</th>
                         <th>Host</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {devices?.map((device, index) => (
                         <tr key={index}>
-                            <td>{device.objid}</td>
-                            <td>{device.probe}</td>
-                            <td>{device.group}</td>
-                            <td>{device.device}</td>
-                            <td>{device.host}</td>
+                            <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.objid}</td>
+                            {/* <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.probe}</td> */}
+                            <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.device}</td>
+                            <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.group}</td>
+                            <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.host}</td>
+                            <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.status === 'Up' ? 'Connected' : 'Disconnected'}</td>
                         </tr>
                     ))}
                 </tbody>
