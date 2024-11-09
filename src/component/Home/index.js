@@ -17,8 +17,8 @@ const Blinker = ({ x, y, icon, color, device }) => {
         position: 'absolute',
         top: `${y}px`,
         left: `${x}px`,
-        width: '10px',
-        height: '10px',
+        width: '20px',
+        height: '20px',
         borderRadius: '50%',
         animation: color === 'red' ? 'blink 1s infinite' : 'none', // Apply animation only for red icons
         cursor: 'pointer',
@@ -32,6 +32,7 @@ const Blinker = ({ x, y, icon, color, device }) => {
                 style={blinkerStyle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                
             />
             {isHovered && (
                 <div style={{
