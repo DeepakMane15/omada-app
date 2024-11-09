@@ -19,9 +19,9 @@ const DeviceList = () => {
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId, true),
         onSuccess: (data) => {
-            setDeviceList(data.data);
-            setFilteredDeviceList(data.data);
-            let count = data.data.filter(d => d.status == 1);
+            setDeviceList(data.data.finalDeviceData);
+            setFilteredDeviceList(data.data.finalDeviceData);
+            let count = data.data.finalDeviceData.filter(d => d.status == 1);
             setConnectedCount(count.length);
         },
         onError: (error) => {

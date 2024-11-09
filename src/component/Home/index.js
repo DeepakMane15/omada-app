@@ -90,14 +90,16 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState(""); // Search term for dropdown
     const [selectedDevice, setSelectedDevice] = useState(null); // Selected device
     const [inputActive, setInputActive] = useState(false);
+    const [deviceTypeData, setDeviceTypeData] = useState([]);
 
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId),
         onSuccess: (data) => {
-            setDeviceList(data.data);
-            let count = data.data.filter(d => d.status === 1);
+            setDeviceList(data.data.finalDeviceData);
+            setFilteredDeviceList(data.data.finalDeviceData);
+            setDeviceTypeData(data?.data?.distinctType || []);
+            let count = data.data.finalDeviceData.filter(d => d.status === 1);
             setConnectedCount(count.length);
-            setFilteredDeviceList(data.data);
         },
         onError: (error) => {
             console.error("Api failed:", error.response?.data || error.message);
@@ -108,7 +110,7 @@ const Home = () => {
     });
 
     const postMutation = useMutation({
-        mutationFn: () => SaveCoordinates(selectedDeviceId, popupPosition.x, popupPosition.y),
+        mutationFn: () => SaveCoordinates(selectedDevice.id, popupPosition.x, popupPosition.y),
         onSuccess: (data) => {
             setSnackbarVisible(true);
             setSearchTerm("");
@@ -223,8 +225,10 @@ const Home = () => {
                 <label style={{ color: 'white' }}>Device Type : </label>
                 <Form.Select style={{ width: '170px' }} aria-label="Filter" value={deviceType} onChange={e => setDeviceType(e.target.value)}>
                     <option value="all">All ({deviceList.length})</option>
-                    <option value="ap">AP ({deviceList.filter(d => d.type === 'ap')?.length || 0})</option>
-                    <option value="switch">Switch ({deviceList.filter(d => d.type === 'switch')?.length || 0})</option>
+                    {deviceTypeData && deviceTypeData.map(typeData => (
+                        <option value={typeData.type}>{typeData.type} ({deviceList.filter(d => d.type === typeData.type)?.length || 0})</option>
+                    ))}
+                    {/* <option value="switch">Switch ({deviceList.filter(d => d.type === 'switch')?.length || 0})</option> */}
                 </Form.Select>
             </div>
             <BlinkAnimationStyles />
