@@ -13,6 +13,7 @@ const PrtgList = () => {
         mutationFn: () => GetPrtgList(),
         onSuccess: (data) => {
             setDevices(data.devices);
+            setFilteredDeviceList(data.device);
             let count = data.devices.filter(d => d.status === 'Up');
             setConnectedCount(count.length);
         },
