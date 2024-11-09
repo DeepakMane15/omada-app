@@ -42,7 +42,7 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/home" className={isLinkActive('/home')}>Home</Nav.Link>
                             <Nav.Link as={Link} to="/device-list" className={isLinkActive('/device-list')}>Device List</Nav.Link>
-                            <Nav.Link as={Link} to="/prtg" className={isLinkActive('/prtg')}>PRTG Map</Nav.Link>
+                            {/* <Nav.Link as={Link} to="/prtg" className={isLinkActive('/prtg')}>PRTG Map</Nav.Link> */}
                             <Nav.Link as={Link} to="/prtg-list" className={isLinkActive('/prtg-list')}>PRTG List</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
