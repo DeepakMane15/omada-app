@@ -113,6 +113,16 @@ const Home = () => {
         }
     });
 
+    useEffect(() => {
+        // Call getMutation.mutate every 2 minutes
+        const interval = setInterval(() => {
+            getMutation.mutate();
+        }, 2 * 60 * 1000); // 2 minutes in milliseconds
+    
+        // Clear the interval on component unmount
+        return () => clearInterval(interval);
+    }, []);
+
     const postMutation = useMutation({
         mutationFn: () => SaveCoordinates(selectedDevice.id, popupPosition.x, popupPosition.y),
         onSuccess: (data) => {
@@ -153,6 +163,8 @@ const Home = () => {
             setApiCalled(true); // Set the flag to true after calling the API
         }
     }, [apiCalled]);
+
+
 
     useEffect(() => {
         const imageElement = imageRef.current;
