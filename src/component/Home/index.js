@@ -92,6 +92,9 @@ const Home = () => {
     const [selectedDevice, setSelectedDevice] = useState(null); // Selected device
     const [inputActive, setInputActive] = useState(false);
     const [deviceTypeData, setDeviceTypeData] = useState([]);
+    // const [searchTerm, setSearchTerm] = useState('');
+    // const [inputActive, setInputActive] = useState(false);
+    const dropdownRef = useRef(null);
 
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId),
@@ -207,6 +210,20 @@ const Home = () => {
         device.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setInputActive(false);
+        }
+    };
+
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
     return (
         <Container style={{ marginTop: '100px' }}>
@@ -255,49 +272,50 @@ const Home = () => {
                             <p className='title-bold'>X: {popupPosition.x}px, Y: {popupPosition.y}px</p>
                             <Form>
                                 <label>Select Device: </label>
-                                <div style={{ position: 'relative' }}>
-                                    <input
-                                        type="text"
-                                        value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                        placeholder="Search device by name"
-                                        className='full-width'
-                                        style={{ padding: '8px', width: '100%', marginBottom: '5px' }}
-                                        onFocus={() => setInputActive(true)}
-                                        onBlur={() => setTimeout(() => setInputActive(false), 200)} // Delay to allow click on option
-                                    />
-                                    {inputActive && filteredOptions.length > 0 && (
-                                        <div
-                                            style={{
-                                                position: 'absolute',
-                                                zIndex: 1000,
-                                                width: '100%',
-                                                maxHeight: '300px',
-                                                overflowY: 'auto',
-                                                backgroundColor: 'white',
-                                                border: '1px solid #ccc',
-                                                borderRadius: '4px',
-                                            }}
-                                        >
-                                            {filteredOptions.map((device) => (
-                                                <div
-                                                    key={device.id}
-                                                    onClick={() => {
-                                                        setSelectedDevice(device);
-                                                        setSearchTerm(device.name);
-                                                    }}
-                                                    style={{
-                                                        padding: '8px',
-                                                        cursor: 'pointer',
-                                                        backgroundColor: selectedDevice?.id === device.id ? '#f0f0f0' : 'white'
-                                                    }}
-                                                >
-                                                    {device.name}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
+                                <div style={{ position: 'relative' }} ref={dropdownRef}>
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search device by name"
+                className="full-width"
+                style={{ padding: '8px', width: '100%', marginBottom: '5px' }}
+                onFocus={() => setInputActive(true)}
+            />
+            {inputActive && filteredOptions.length > 0 && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        zIndex: 1000,
+                        width: '100%',
+                        maxHeight: '300px',
+                        overflowY: 'auto',
+                        backgroundColor: 'white',
+                        border: '1px solid #ccc',
+                        borderRadius: '4px',
+                    }}
+                >
+                    {filteredOptions.map((device) => (
+                        <div
+                            key={device.id}
+                            onClick={() => {
+                                setSelectedDevice(device);
+                                setSearchTerm(device.name);
+                                setInputActive(false); // Close dropdown after selection
+                            }}
+                            style={{
+                                padding: '8px',
+                                cursor: 'pointer',
+                                backgroundColor:
+                                    searchTerm === device.name ? '#f0f0f0' : 'white',
+                            }}
+                        >
+                            {device.name}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
                                 {/* <Form.Select aria-label="deviceId" className='full-width'
                                     value={selectedDeviceId} onChange={(e) => setSelectedDeviceId(e.target.value)}>
                                     <option>Select device</option>
