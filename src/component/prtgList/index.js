@@ -62,6 +62,7 @@ const PrtgList = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>Sr no</th>
                         <th>Object ID</th>
                         {/* <th>Probe</th> */}
                         <th>Device</th>
@@ -73,6 +74,7 @@ const PrtgList = () => {
                 <tbody>
                     {filteredDeviceList?.map((device, index) => (
                         <tr key={index}>
+                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{index+1}</td>
                             <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.objid}</td>
                             {/* <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.probe}</td> */}
                             <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.device}</td>
