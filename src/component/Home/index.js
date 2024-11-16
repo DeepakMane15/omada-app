@@ -81,6 +81,10 @@ const Home = () => {
     const [type, setType] = useState("all");
     const [deviceType, setDeviceType] = useState("all");
     const [connectedCount, setConnectedCount] = useState(0);
+    const [disConnectedCount, setDisConnectedCount] = useState(0);
+    const [missedCount, setMissedCount] = useState(0);
+    const [isolatedCount, setIsolatedCount] = useState(0);
+    const [pendingCount, setPendingCount] = useState(0);
     const [apiCalled, setApiCalled] = useState(false);
     const [popupVisible, setPopupVisible] = useState(false); // Popup visibility
     const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -102,8 +106,16 @@ const Home = () => {
             setDeviceList(data.data.finalDeviceData);
             setFilteredDeviceList(data.data.finalDeviceData);
             setDeviceTypeData(data?.data?.distinctType || []);
-            let count = data.data.finalDeviceData.filter(d => d.status === 1);
-            setConnectedCount(count.length);
+            let connectedCount = data.data.finalDeviceData.filter(d => d.status == 1);
+            setConnectedCount(connectedCount.length);
+            let disCont = data.data.finalDeviceData.filter(d => d.status == 0);
+            setDisConnectedCount(disCont.length);
+            let pendingCount = data.data.finalDeviceData.filter(d => d.status == 2);
+            setPendingCount(pendingCount.length);
+            let missedCount = data.data.finalDeviceData.filter(d => d.status == 3);
+            setMissedCount(missedCount.length);
+            let isolatedCount = data.data.finalDeviceData.filter(d => d.status == 4);
+            setIsolatedCount(isolatedCount.length);
         },
         onError: (error) => {
             console.error("Api failed:", error.response?.data || error.message);
@@ -249,7 +261,10 @@ const Home = () => {
                 <Form.Select className="custom-select" style={{ width: '170px !important' }} aria-label="Filter" value={type} onChange={e => setType(e.target.value)}>
                     <option value="all">All ({deviceList.length})</option>
                     <option value="1" style={{ color: 'green' }}>Connected ({connectedCount})</option>
-                    <option value="0" style={{ color: 'red' }}>Disconnected ({deviceList.length - connectedCount})</option>
+                    <option value="0" style={{ color: 'red' }}>Disconnected ({disConnectedCount})</option>
+                    <option value="2" style={{ color: 'red' }}>Pending ({pendingCount})</option>
+                    <option value="3" style={{ color: 'red' }}>Heartbeat Missed ({missedCount})</option>
+                    <option value="4" style={{ color: 'red' }}>Isolated ({isolatedCount})</option>
                 </Form.Select>
 
                 <label style={{ color: 'white' }}>Device Type : </label>
