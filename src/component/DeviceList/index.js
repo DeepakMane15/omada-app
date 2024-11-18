@@ -19,6 +19,21 @@ const DeviceList = () => {
     const [isolatedCount, setIsolatedCount] = useState(0);
     const [pendingCount, setPendingCount] = useState(0);
     const [deviceType, setDeviceType] = useState("all");
+    const [sortOrder, setSortOrder] = useState(null); // null (no sort), 'asc', 'desc'
+
+    const handleSort = () => {
+        const nextSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+        setSortOrder(nextSortOrder);
+    };
+
+    const sortedDeviceList = [...filteredDeviceList].sort((a, b) => {
+        if (sortOrder === 'asc') {
+            return (a.clients || 0) - (b.clients || 0); // Handle undefined clients as 0
+        } else if (sortOrder === 'desc') {
+            return (b.clients || 0) - (a.clients || 0);
+        }
+        return 0; // No sorting if sortOrder is null
+    });
 
     const getMutation = useMutation({
         mutationFn: () => GetDeviceApi(token, sessionId, true),
@@ -96,17 +111,21 @@ const DeviceList = () => {
                             <th>MAC AAddress</th>
                             <th>IP AAddress</th>
                             <th>Status</th>
-                            <th>Clients No</th>
+                            <th onClick={handleSort} style={{ cursor: "pointer" }}>
+                                Clients No {sortOrder === 'asc' ? '↑' : sortOrder === 'desc' ? '↓' : ''}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredDeviceList.map((device, i) => (
-                            <tr>
+                        {sortedDeviceList.map((device, i) => (
+                            <tr key={device.mac}>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{i + 1}</td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["name"]}</td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["mac"]}</td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["ip"]}</td>
-                                <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["status"] === 1 ? "Connected" : "Disconnected"}</td>
+                                <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>
+                                    {device["status"] === 1 ? "Connected" : "Disconnected"}
+                                </td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["clients"]}</td>
                             </tr>
                         ))}
