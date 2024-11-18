@@ -52,6 +52,9 @@ const Blinker = ({ x, y, icon, color, device }) => {
                     <div>Type: {device.type}</div>
                     <div>IP: {device.ip}</div>
                     <div>MAC: {device.mac}</div>
+                    {device.portal === 'omada' && (
+                      <div>Clients No: {device?.clientsNo}</div>
+                    )}
                     <div>Status: {device.status === 1 ? 'Connected' : 'Disconnected'}</div>
                 </div>
             )}

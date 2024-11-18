@@ -45,6 +45,16 @@ const DeviceList = () => {
         getMutation.mutate();
     }, [])
 
+    useEffect(() => {
+        // Call getMutation.mutate every 2 minutes
+        const interval = setInterval(() => {
+            getMutation.mutate();
+        }, 2 * 60 * 1000); // 2 minutes in milliseconds
+    
+        // Clear the interval on component unmount
+        return () => clearInterval(interval);
+    }, []);
+
     const applyFilters = (devices) => {
         let filteredList = devices.filter(d =>
             (type === "all" || d.status === Number(type)) &&
@@ -86,6 +96,7 @@ const DeviceList = () => {
                             <th>MAC AAddress</th>
                             <th>IP AAddress</th>
                             <th>Status</th>
+                            <th>Clients No</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,6 +107,7 @@ const DeviceList = () => {
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["mac"]}</td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["ip"]}</td>
                                 <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["status"] === 1 ? "Connected" : "Disconnected"}</td>
+                                <td style={{ color: (device["status"] === 1) ? 'green' : 'red' }}>{device["clients"]}</td>
                             </tr>
                         ))}
                     </tbody>
