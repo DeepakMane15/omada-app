@@ -9,21 +9,21 @@ const PrtgList = () => {
     const [type, setType] = useState("all");
     const [filteredDeviceList, setFilteredDeviceList] = useState([]);
 
-    const getMutation = useMutation({
-        mutationFn: () => GetPrtgList(),
-        onSuccess: (data) => {
-            setDevices(data.devices);
-            setFilteredDeviceList(data.devices);
-            let count = data.devices.filter(d => d.status === 'Up');
-            setConnectedCount(count.length);
-        },
-        onError: (error) => {
-            console.error("Api failed:", error.response?.data || error.message);
-        },
-        options: {
-            staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
-        }
-    });
+    // const getMutation = useMutation({
+    //     mutationFn: () => GetPrtgList(),
+    //     onSuccess: (data) => {
+    //         setDevices(data.devices);
+    //         setFilteredDeviceList(data.devices);
+    //         let count = data.devices.filter(d => d.status === 'Up');
+    //         setConnectedCount(count.length);
+    //     },
+    //     onError: (error) => {
+    //         console.error("Api failed:", error.response?.data || error.message);
+    //     },
+    //     options: {
+    //         staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
+    //     }
+    // });
 
     const applyFilters = (devices) => {
         let filteredList = devices.filter(d =>
@@ -37,9 +37,9 @@ const PrtgList = () => {
     }, [type]);
 
 
-    useEffect(() => {
-        getMutation.mutate();
-    }, []);
+    // useEffect(() => {
+    //     getMutation.mutate();
+    // }, []);
 
     return (
         <Container style={{ marginTop: '100px' }}>
