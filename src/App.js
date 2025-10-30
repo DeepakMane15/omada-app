@@ -38,12 +38,12 @@ function App() {
       } />
 
 
-      {/* <Route path="/prtg-list" element={
+      <Route path="/op-manager" element={
         <ProtectedRoute >
           <Header />
           <PrtgList />
         </ProtectedRoute>
-      } /> */}
+      } />
 
     </Routes>
   );

@@ -9,25 +9,26 @@ const PrtgList = () => {
     const [type, setType] = useState("all");
     const [filteredDeviceList, setFilteredDeviceList] = useState([]);
 
-    // const getMutation = useMutation({
-    //     mutationFn: () => GetPrtgList(),
-    //     onSuccess: (data) => {
-    //         setDevices(data.devices);
-    //         setFilteredDeviceList(data.devices);
-    //         let count = data.devices.filter(d => d.status === 'Up');
-    //         setConnectedCount(count.length);
-    //     },
-    //     onError: (error) => {
-    //         console.error("Api failed:", error.response?.data || error.message);
-    //     },
-    //     options: {
-    //         staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
-    //     }
-    // });
+    const getMutation = useMutation({
+        mutationFn: () => GetPrtgList(),
+        onSuccess: (data) => {
+            setDevices(data.devices);
+            setFilteredDeviceList(data.devices);
+            let count = data.devices.filter(d => d.statusNum == 5);
+            setConnectedCount(count.length);
+        },
+        onError: (error) => {
+            console.error("Api failed:", error.response?.data || error.message);
+        },
+        options: {
+            staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
+        }
+    });
 
     const applyFilters = (devices) => {
         let filteredList = devices.filter(d =>
-            type === "all" || d.status === type
+            (type === "all") || (type ===  'Up' && d.statusNum == 5)
+            || (type === 'Paused' && d.statusNum != 5)
         );
         setFilteredDeviceList(filteredList);
     };
@@ -37,13 +38,13 @@ const PrtgList = () => {
     }, [type]);
 
 
-    // useEffect(() => {
-    //     getMutation.mutate();
-    // }, []);
+    useEffect(() => {
+        getMutation.mutate();
+    }, []);
 
     return (
         <Container style={{ marginTop: '100px' }}>
-            <h2>PRTG Device List</h2>
+            <h2 style={{color: '#fff'}}>OP Manager Device List</h2>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
                 <label style={{ color: 'white' }}>Filter : </label>
                 <Form.Select className="custom-select" style={{ width: '170px' }} aria-label="Filter" value={type} onChange={e => setType(e.target.value)}>
@@ -63,24 +64,24 @@ const PrtgList = () => {
                 <thead>
                     <tr>
                         <th>Sr no</th>
-                        <th>Object ID</th>
+                        <th>Device Name</th>
                         {/* <th>Probe</th> */}
-                        <th>Device</th>
-                        <th>Group</th>
-                        <th>Host</th>
+                        <th>IP Address</th>
+                        <th>Category</th>
+                        <th>Type</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredDeviceList?.map((device, index) => (
                         <tr key={index}>
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{index+1}</td>
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.objid}</td>
-                            {/* <td style={{color: device.status === 'Up' ? 'green' : 'red'}}>{device.probe}</td> */}
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.device}</td>
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.group}</td>
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.host}</td>
-                            <td style={{ color: device.status === 'Up' ? 'green' : 'red' }}>{device.status === 'Up' ? 'Connected' : 'Disconnected'}</td>
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{index+1}</td>
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{device.displayName}</td>
+                            {/* <td style={{color: device.statusNum == 5 ? 'green' : 'red'}}>{device.probe}</td> */}
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{device.ipaddress}</td>
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{device.category}</td>
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{device.type}</td>
+                            <td style={{ color: device.statusNum == 5 ? 'green' : 'red' }}>{device.statusStr}</td>
                         </tr>
                     ))}
                 </tbody>

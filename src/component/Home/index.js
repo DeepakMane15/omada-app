@@ -89,7 +89,7 @@ const Home = () => {
     const [isolatedCount, setIsolatedCount] = useState(0);
     const [pendingCount, setPendingCount] = useState(0);
     const [apiCalled, setApiCalled] = useState(false);
-    const [popupVisible, setPopupVisible] = useState(true); // Popup visibility
+    const [popupVisible, setPopupVisible] = useState(false); // Popup visibility
     const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
     const [selectedDeviceId, setSelectedDeviceId] = useState(false);
     const [snackbarVisible, setSnackbarVisible] = useState(false);
